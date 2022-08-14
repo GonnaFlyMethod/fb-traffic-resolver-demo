@@ -1,12 +1,12 @@
 import { fetch } from "services";
-import { TUserMeta } from "shared/types";
+import {TUser} from "../../shared/types";
 
-export const create = (user: TUserMeta) =>
-  fetch.post<TUserMeta>("/users", user);
+export const create = (user: TUser) =>
+  fetch.post<TUser>("/users", user);
 
-export const update = (user: TUserMeta) => fetch.put(`/users/${user.id}`, user);
+export const update = (user: TUser) => fetch.put(`/users/${user.id}`, user);
 
-export const remove = (id: number) => fetch.delete(`/users/${id}`);
+export const remove = (id: string) => fetch.delete(`/users/${id}`);
 
 export const list = () =>
-  fetch.get<{ users: TUserMeta[]; count: number }>("/users");
+  fetch.get<{ users: TUser[]; count: number }>("/users");

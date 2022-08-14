@@ -6,11 +6,9 @@ import { Button, Grid, TextField } from "@mui/material";
 
 import {
   emailValidation,
-  passwordValidation,
-  confirmPasswordValidation,
   commonStringValidation,
 } from "shared/validations";
-import { TUserMeta } from "shared/types";
+import { TUser } from "shared/types";
 
 import { UsersModel } from "../../model";
 import styles from "./Styles.module.scss";
@@ -19,26 +17,24 @@ const validationSchema = yup.object().shape({
   name: commonStringValidation("Name", 3),
   surname: commonStringValidation("Surname", 3),
   email: emailValidation(),
-  password: passwordValidation(),
-  confirmPassword: confirmPasswordValidation(),
 });
 
 function UpdateUserForm({ user, hideModal }: any) {
-  const { name, surname, email } = user;
+  const { id, name, surname, email } = user;
 
   const { t } = useTranslation();
 
   const { handleSubmit, values, handleChange, touched, errors } =
-    useFormik<TUserMeta>({
+    useFormik<TUser>({
       initialValues: {
+        id,
         name,
         surname,
         email,
-        password: "",
-        confirmPassword: "",
       },
       validationSchema,
-      onSubmit: (value: TUserMeta) => {
+      onSubmit: (value: TUser) => {
+        console.log(value);
         UsersModel.update(value);
         hideModal();
       },
@@ -81,32 +77,6 @@ function UpdateUserForm({ user, hideModal }: any) {
             onChange={handleChange}
             error={touched.email && Boolean(errors.email)}
             helperText={touched.email && errors.email}
-          />
-        </Grid>
-        <Grid item>
-          <TextField
-            fullWidth
-            id="password"
-            name="password"
-            label={t("user:password")}
-            type="password"
-            value={values.password}
-            onChange={handleChange}
-            error={touched.password && Boolean(errors.password)}
-            helperText={touched.password && errors.password}
-          />
-        </Grid>
-        <Grid item>
-          <TextField
-            fullWidth
-            id="confirmPassword"
-            name="confirmPassword"
-            label={t("user:confirmPassword")}
-            type="password"
-            value={values.confirmPassword}
-            onChange={handleChange}
-            error={touched.confirmPassword && Boolean(errors.confirmPassword)}
-            helperText={touched.confirmPassword && errors.confirmPassword}
           />
         </Grid>
         <Grid item>

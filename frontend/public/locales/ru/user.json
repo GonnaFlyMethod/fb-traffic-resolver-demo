@@ -3,8 +3,6 @@
   "surname":"Фамилия",
   "email":"Email",
   "role":"Роль",
-  "password":"Пароль",
-  "confirmPassword":"Подтвердите пароль",
   "form":{
     "createNewUser":"Создать нового пользователя",
     "updateUser":"Обновить пользователя"
