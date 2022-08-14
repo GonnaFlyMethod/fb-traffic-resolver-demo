@@ -62,19 +62,19 @@ export const getColumns = (): TableColumn[] => [
   },
   {
     key: "name",
-    title: i18next.t("user:name"),
+    title: "name",
   },
   {
     key: "surname",
-    title: i18next.t("user:surname"),
+    title: "surname",
   },
   {
     key: "email",
-    title: i18next.t("user:email"),
+    title: "email",
   },
   {
     key: "actions",
-    title: i18next.t("common.actions"),
+    title: "actions",
     align: "right",
     getValue: (row: TUser) => <ActionButtons user={row} />,
   },

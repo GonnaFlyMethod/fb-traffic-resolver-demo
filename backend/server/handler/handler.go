@@ -5,22 +5,21 @@ import (
 	"backend/server"
 	"bytes"
 	"encoding/json"
-	"fmt"
 	"github.com/go-chi/chi/v5"
-	"io"
+	"github.com/google/uuid"
 	"net/http"
 )
 
 type usersListResponse struct {
-	Users []common.UserWithID `json:"users"`
-	Count int                 `json:"count"`
+	Users []*common.UserWithID `json:"users"`
+	Count int                  `json:"count"`
 }
 
 type UserStorage interface {
-	GetAllUsers() []common.UserWithID
+	GetAllUsers() []*common.UserWithID
 	CreateNewUser(u common.UserWithoutID) error
-	// UpdateUser()
-	// DeleteUser()
+	UpdateUser(userID string, user common.UserWithoutID) bool
+	DeleteUser(userID string) bool
 }
 
 type Handler struct {
@@ -75,26 +74,51 @@ func (h *Handler) createNewUser(w http.ResponseWriter, r *http.Request) {
 }
 
 func (h *Handler) updateUser(w http.ResponseWriter, r *http.Request) {
-	fmt.Println(r, "update")
+	userIDToUpdate := chi.URLParam(r, "id")
+	if _, err := uuid.Parse(userIDToUpdate); err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	requestBodyAsBytes, err := readRequestBody(r)
+	if err != nil {
+		writeInternalErrResponse(w)
+		return
+	}
+
+	jsonDecoder := json.NewDecoder(bytes.NewReader(requestBodyAsBytes))
+	var user common.UserWithoutID
+	if err = jsonDecoder.Decode(&user); err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	if !user.IsCompletelyFilled() {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
+	isUserUpdated := h.storage.UpdateUser(userIDToUpdate, user)
+	if !isUserUpdated {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+
 	w.WriteHeader(http.StatusNoContent)
 }
 
 func (h *Handler) deleteUser(w http.ResponseWriter, r *http.Request) {
-	w.WriteHeader(http.StatusNoContent)
-}
-
-func readRequestBody(r *http.Request) ([]byte, error) {
-	content, err := io.ReadAll(r.Body)
-	if err != nil {
-		return nil, err
+	userIDToDelete := chi.URLParam(r, "id")
+	if _, err := uuid.Parse(userIDToDelete); err != nil {
+		w.WriteHeader(http.StatusBadRequest)
+		return
 	}
 
-	defer func(r *http.Request) {
-		if err = r.Body.Close(); err != nil {
-			fmt.Println("failed to close request body")
-		}
-	}(r)
+	isUserDeleted := h.storage.DeleteUser(userIDToDelete)
+	if !isUserDeleted {
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
 
-	r.Body = io.NopCloser(bytes.NewBuffer(content))
-	return content, nil
+	w.WriteHeader(http.StatusNoContent)
 }
