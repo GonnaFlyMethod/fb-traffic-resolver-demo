@@ -5,7 +5,7 @@ COPY ./backend /backend
 RUN go build .
 CMD ["./backend"]
 
-FROM node:14.16.0 as frontend
+FROM node:16.16.0 as frontend
 WORKDIR /frontend
 
 COPY ./frontend/package.json ./frontend/yarn.lock ./
