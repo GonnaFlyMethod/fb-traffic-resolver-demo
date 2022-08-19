@@ -16,7 +16,7 @@
     "dotenv": "^16.0.0",
     "eslint": "^7.11.0",
     "formik": "^2.2.9",
-    "i18next": "^21.6.12",
+    "i18next": "^21.8.14",
     "i18next-browser-languagedetector": "^6.1.3",
     "i18next-http-backend": "^1.3.2",
     "mobx": "^6.3.13",
