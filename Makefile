@@ -5,7 +5,7 @@ help:
 
 .PHONY: run
 run: ## Runs the whole app in docker containers
-	docker compose up --build frontend backend
+	docker compose up --build  backend resolver
 
 .PHONY: down
 down: ## Shuts down the app

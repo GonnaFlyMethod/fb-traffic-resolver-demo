@@ -7,12 +7,12 @@ import { IconButton, Tooltip } from "@mui/material";
 import { observer } from "mobx-react-lite";
 
 import { useDialog } from "shared/hooks";
-import {TableColumn, TUser} from "shared/types";
+import {TableColumn, TUserWithID} from "shared/types";
 
 import { UpdateUserForm, DeleteUserDialog } from "../ui";
 import UsersModel from "./Users.model";
 
-const ActionButtons = observer(({ user }: { user: TUser }) => {
+const ActionButtons = observer(({ user }: { user: TUserWithID }) => {
   const { t } = useTranslation();
 
   const [showUpdateUserModal] = useDialog(
@@ -76,6 +76,6 @@ export const getColumns = (): TableColumn[] => [
     key: "actions",
     title: "actions",
     align: "right",
-    getValue: (row: TUser) => <ActionButtons user={row} />,
+    getValue: (row: TUserWithID) => <ActionButtons user={row} />,
   },
 ];

@@ -2,10 +2,10 @@ import { makeAutoObservable } from "mobx";
 
 import { API } from "services";
 import LoadingModel from "models/Loading";
-import {TUser} from "../../../shared/types";
+import {TUserWithID, TUserWithoutID} from "../../../shared/types";
 
 class UsersModel {
-  private _users: TUser[] = [];
+  private _users: TUserWithID[] = [];
 
   loading: LoadingModel;
 
@@ -15,7 +15,7 @@ class UsersModel {
     this.loading = new LoadingModel();
   }
 
-  set users(data: TUser[]) {
+  set users(data: TUserWithID[]) {
     this._users = data;
   }
 
@@ -32,7 +32,7 @@ class UsersModel {
     this.loading.end();
   }
 
-  async create(user: TUser){
+  async create(user: TUserWithoutID){
     this.loading.begin();
 
     await API.user.create(user);
@@ -50,10 +50,10 @@ class UsersModel {
     this.loading.end();
   }
 
-  async update(user: TUser) {
+  async update(userID: string, user: TUserWithoutID) {
     this.loading.begin();
 
-    await API.user.update(user);
+    await API.user.update(userID, user);
     await this.fetch();
 
     this.loading.end();

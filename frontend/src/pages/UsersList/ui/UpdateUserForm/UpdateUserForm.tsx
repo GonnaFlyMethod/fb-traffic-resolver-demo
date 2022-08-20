@@ -1,6 +1,5 @@
 import { observer } from "mobx-react-lite";
 import * as yup from "yup";
-import { useTranslation } from "react-i18next";
 import { useFormik } from "formik";
 import { Button, Grid, TextField } from "@mui/material";
 
@@ -8,10 +7,11 @@ import {
   emailValidation,
   commonStringValidation,
 } from "shared/validations";
-import { TUser } from "shared/types";
+import {TUserWithID, TUserWithoutID} from "shared/types";
 
 import { UsersModel } from "../../model";
 import styles from "./Styles.module.scss";
+import {useTranslation} from "react-i18next";
 
 const validationSchema = yup.object().shape({
   name: commonStringValidation("Name", 3),
@@ -25,7 +25,7 @@ function UpdateUserForm({ user, hideModal }: any) {
   const { t } = useTranslation();
 
   const { handleSubmit, values, handleChange, touched, errors } =
-    useFormik<TUser>({
+    useFormik<TUserWithID>({
       initialValues: {
         id,
         name,
@@ -33,9 +33,14 @@ function UpdateUserForm({ user, hideModal }: any) {
         email,
       },
       validationSchema,
-      onSubmit: (value: TUser) => {
-        console.log(value);
-        UsersModel.update(value);
+      onSubmit: (value: TUserWithID) => {
+        let userData: TUserWithoutID = {
+          name: value.name,
+          surname: value.surname,
+          email: value.email
+        }
+
+        UsersModel.update(value.id, userData);
         hideModal();
       },
     });

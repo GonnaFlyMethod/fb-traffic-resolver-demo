@@ -34,10 +34,10 @@ func (h *Handler) BuildAccessPoliciesAndRoutes(router *chi.Mux) {
 	router.Use(server.ResponseAsJSONMiddleware)
 	router.Use(server.CorsMiddleware)
 
-	router.Get("/users", h.getAllUsers)
-	router.Post("/users", h.createNewUser)
-	router.Put("/users/{id}", h.updateUser)
-	router.Delete("/users/{id}", h.deleteUser)
+	router.Get("/api/users", h.getAllUsers)
+	router.Post("/api/users", h.createNewUser)
+	router.Put("/api/users/{id}", h.updateUser)
+	router.Delete("/api/users/{id}", h.deleteUser)
 }
 
 func (h *Handler) getAllUsers(w http.ResponseWriter, r *http.Request) {

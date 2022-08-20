@@ -1,6 +1,11 @@
-export interface TUser {
-  id: string;
+export interface TUserWithoutID {
   name: string;
   surname: string;
   email: string;
 }
+
+export interface TUserWithID extends TUserWithoutID {
+  id: string;
+}
+
+

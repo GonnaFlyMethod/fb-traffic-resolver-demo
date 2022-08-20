@@ -8,6 +8,7 @@ function Router() {
   return (
     <Routes>
       <Route path={ROUTES.USER_LIST} element={<UsersList />} />
+      <Route path={ROUTES.NOT_FOUND} element={"Not found"} />
       <Route path="/" element={<Navigate to={ROUTES.USER_LIST} replace />} />
       <Route path="*" element={<Navigate to={ROUTES.NOT_FOUND} replace />} />
     </Routes>

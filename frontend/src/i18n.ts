@@ -5,16 +5,16 @@ import { initReactI18next } from 'react-i18next'
 const namespaces = ['translation', 'validation', 'user', 'notification', 'item', 'pages']
 
 i18n
-  .use(Backend)
-  .use(initReactI18next)
-  .init({
-    ns: namespaces,
-    fallbackLng: 'en',
-    debug: true,
-    react: {
-      useSuspense: false,
-      nsMode: 'fallback',
-    },
-  })
+    .use(Backend)
+    .use(initReactI18next)
+    .init({
+        ns: namespaces,
+        fallbackLng: 'en',
+        debug: true,
+        react: {
+            useSuspense: false,
+            nsMode: 'fallback',
+        },
+    })
 
 export default i18n
