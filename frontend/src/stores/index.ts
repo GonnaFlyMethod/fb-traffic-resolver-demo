@@ -1,1 +1,1 @@
-export { useRootStore, RootStoreProvider, default as RootStore } from './Root'
+export {useRootStore, RootStoreProvider, default as RootStore} from './Root'

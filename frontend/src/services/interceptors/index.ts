@@ -1,1 +1,1 @@
-export { extractDataInterceptor } from "./extractDataInterceptor";
+export {extractDataInterceptor} from "./extractDataInterceptor";

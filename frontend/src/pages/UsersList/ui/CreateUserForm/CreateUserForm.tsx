@@ -4,10 +4,7 @@ import {useMemo} from "react";
 import {useFormik} from "formik";
 import {Button, Grid, TextField} from "@mui/material";
 
-import {
-    emailValidation,
-    commonStringValidation,
-} from "shared/validations";
+import {commonStringValidation, emailValidation,} from "shared/validations";
 import {TUserWithoutID} from "shared/types";
 
 import {UsersModel} from "../../model";
@@ -15,7 +12,7 @@ import styles from "./Styles.module.scss";
 import {useTranslation} from "react-i18next";
 
 function CreateUserForm({hideModal}: any) {
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     const validationSchema = useMemo(
         () =>

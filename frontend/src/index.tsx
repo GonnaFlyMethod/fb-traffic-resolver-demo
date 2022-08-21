@@ -5,4 +5,4 @@ import App from './app/App'
 import './i18n'
 import './index.scss'
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(<App/>, document.getElementById('root'))

@@ -1,10 +1,10 @@
 {
-  "name":"Name",
-  "surname":"Surname",
-  "email":"Email",
-  "role":"Role",
-  "form":{
-    "createNewUser":"Create new user",
-    "updateUser":"Update user"
+  "name": "Name",
+  "surname": "Surname",
+  "email": "Email",
+  "role": "Role",
+  "form": {
+    "createNewUser": "Create new user",
+    "updateUser": "Update user"
   }
 }
