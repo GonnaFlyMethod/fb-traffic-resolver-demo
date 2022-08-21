@@ -4,9 +4,10 @@ help:
 
 
 .PHONY: run
-run: ## Runs the whole app in docker containers
+run: ## Runs demo in docker environment
 	docker compose up --build  backend resolver
 
+
 .PHONY: down
-down: ## Shuts down the app
+down: ## Shuts down demo
 	docker compose down
