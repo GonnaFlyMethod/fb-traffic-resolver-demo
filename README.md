@@ -1,5 +1,5 @@
 # 🕹️ fb-traffic-resolver-demo
-This is a simple demo application that implements a CRUD functionality that is related to users(Create users, Read users, Update users and Delete users)
+This is a simple demo application that implements a CRUD functionality that is related to users(Create users, Read users, Update users and Delete users).
 The demo shows basic workflow with [fb-traffic-resolver](https://github.com/GonnaFlyMethod/fb-traffic-resolver)
 
 # 🧩 Components of the demo
