@@ -1,7 +1,7 @@
 package storage
 
 import (
-	"backend/common"
+	"github.com/GonnaFlyMethod/fb-traffic-resolver-demo/backend/common"
 	"github.com/google/uuid"
 )
 

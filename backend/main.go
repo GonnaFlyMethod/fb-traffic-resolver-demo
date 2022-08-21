@@ -1,9 +1,9 @@
 package main
 
 import (
-	"backend/server/handler"
-	"backend/storage"
 	"fmt"
+	"github.com/GonnaFlyMethod/fb-traffic-resolver-demo/backend/server/handler"
+	"github.com/GonnaFlyMethod/fb-traffic-resolver-demo/backend/storage"
 	"github.com/go-chi/chi/v5"
 	"log"
 	"net/http"

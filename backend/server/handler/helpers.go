@@ -43,7 +43,6 @@ func writeResponse(w http.ResponseWriter, statusCode int, responseBody interface
 	}
 
 	if _, err = w.Write(marshalledResponseBody); err != nil {
-		fmt.Println(err)
 		fmt.Println("can't write response body")
 		return
 	}
