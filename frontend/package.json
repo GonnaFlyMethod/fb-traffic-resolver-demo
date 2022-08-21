@@ -19,7 +19,7 @@
     "i18next": "^21.6.12",
     "i18next-browser-languagedetector": "^6.1.3",
     "i18next-http-backend": "^1.3.2",
-    "mobx": "^6.3.13",
+    "mobx": "^6.6.1",
     "mobx-react-lite": "^3.2.3",
     "node-sass": "^4.0.0",
     "react": "^17.0.2",
