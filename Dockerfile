@@ -16,7 +16,7 @@ WORKDIR /frontend
 COPY ./frontend .
 RUN yarn && yarn run build
 
-FROM gonnaflymethod/fb-traffic-resolver:v2.0.0 as resolver
+FROM gonnaflymethod/fb-traffic-resolver:1.0.0 as resolver
 # Also you can pull the container with resolver from GitHub container registry:
-# FROM ghcr.io/gonnaflymethod/fb-traffic-resolver:v2.0.0 as resolver
+#FROM ghcr.io/gonnaflymethod/fb-traffic-resolver:1.0.0 as resolver
 COPY --from=frontend_build /frontend/build ./build
