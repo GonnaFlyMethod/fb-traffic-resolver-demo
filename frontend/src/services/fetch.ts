@@ -1,14 +1,7 @@
 
 import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
 
-import { API_URL } from "shared/consts";
-
 import { extractDataInterceptor } from "./interceptors";
-
-export type FetchServiceConfig = {
-  apiUrl: string;
-  photoUrl: string;
-};
 
 export class FetchService {
   private instance: AxiosInstance;
@@ -17,10 +10,6 @@ export class FetchService {
     this.instance = axios.create();
 
     this.instance.interceptors.response.use(extractDataInterceptor);
-  }
-
-  init() {
-    this.instance.defaults.baseURL = API_URL;
   }
 
   public post<T>(

@@ -1,12 +1,11 @@
-export interface TUser {
-  email: string;
-  password: string;
-}
-
-export interface TUserMeta extends TUser {
-  id?: number;
+export interface TUserWithoutID {
   name: string;
   surname: string;
-  confirmPassword?: string;
-  avatar?: string;
+  email: string;
 }
+
+export interface TUserWithID extends TUserWithoutID {
+  id: string;
+}
+
+

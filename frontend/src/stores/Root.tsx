@@ -1,19 +1,12 @@
 import { createContext, useContext } from "react";
 
 import LoadingModel from "models/Loading";
-import { fetch } from "services";
 
 export class RootStore {
   readonly loading: LoadingModel;
 
   constructor() {
-    this.init();
-
     this.loading = new LoadingModel();
-  }
-
-  async init() {
-    fetch.init();
   }
 }
 

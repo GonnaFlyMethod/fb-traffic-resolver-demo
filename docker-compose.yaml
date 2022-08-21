@@ -2,13 +2,19 @@ services:
   backend:
     build:
       context: .
-      target: backend
-    ports:
-      - 8000:8000
+      target: backend_app
+    environment:
+      BACKEND_PORT: ${BACKEND_PORT}
 
-  frontend:
+  resolver:
     build:
       context: .
-      target: frontend
+      target: resolver
+    environment:
+      ADDRESS_OF_API: ${ADDRESS_OF_API}
+      PING_API_ON_START: ${PING_API_ON_START}
+      RESOLVER_PORT: ${RESOLVER_PORT}
     ports:
-      - 3000:3000
+      - 127.0.0.1:${RESOLVER_PORT}:${RESOLVER_PORT}
+    depends_on:
+      - backend

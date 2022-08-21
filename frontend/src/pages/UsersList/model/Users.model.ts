@@ -1,12 +1,11 @@
 import { makeAutoObservable } from "mobx";
 
 import { API } from "services";
-import { TUserMeta } from "shared/types";
 import LoadingModel from "models/Loading";
-import axios from "axios";
+import {TUserWithID, TUserWithoutID} from "../../../shared/types";
 
 class UsersModel {
-  private _users: TUserMeta[] = [];
+  private _users: TUserWithID[] = [];
 
   loading: LoadingModel;
 
@@ -16,7 +15,7 @@ class UsersModel {
     this.loading = new LoadingModel();
   }
 
-  set users(data: TUserMeta[]) {
+  set users(data: TUserWithID[]) {
     this._users = data;
   }
 
@@ -33,16 +32,16 @@ class UsersModel {
     this.loading.end();
   }
 
-  async create(user: TUserMeta){
+  async create(user: TUserWithoutID){
     this.loading.begin();
 
     await API.user.create(user);
-    this.fetch();
+    await this.fetch();
 
     this.loading.end();
   }
 
-  async remove(id: number) {
+  async remove(id: string) {
     this.loading.begin();
 
     await API.user.remove(id);
@@ -51,10 +50,10 @@ class UsersModel {
     this.loading.end();
   }
 
-  async update(user: TUserMeta) {
+  async update(userID: string, user: TUserWithoutID) {
     this.loading.begin();
 
-    await API.user.update(user);
+    await API.user.update(userID, user);
     await this.fetch();
 
     this.loading.end();
