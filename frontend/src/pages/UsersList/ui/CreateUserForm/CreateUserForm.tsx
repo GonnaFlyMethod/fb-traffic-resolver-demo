@@ -82,7 +82,7 @@ function CreateUserForm({hideModal}: any) {
                 </Grid>
                 <Grid item>
                     <Button color="primary" variant="contained" fullWidth type="submit">
-                        {"Confirm"}
+                        {t("common.confirm")}
                     </Button>
                 </Grid>
             </Grid>
