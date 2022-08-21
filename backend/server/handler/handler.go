@@ -1,10 +1,10 @@
 package handler
 
 import (
-	"backend/common"
-	"backend/server"
 	"bytes"
 	"encoding/json"
+	"github.com/GonnaFlyMethod/fb-traffic-resolver-demo/backend/common"
+	"github.com/GonnaFlyMethod/fb-traffic-resolver-demo/backend/server"
 	"github.com/go-chi/chi/v5"
 	"github.com/google/uuid"
 	"net/http"

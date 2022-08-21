@@ -1,4 +1,4 @@
-module backend
+module github.com/GonnaFlyMethod/fb-traffic-resolver-demo/backend
 
 go 1.18
 
