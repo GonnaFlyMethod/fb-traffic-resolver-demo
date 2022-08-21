@@ -1,1 +1,1 @@
-export { default as DeleteUserDialog } from './DeleteUserDialog'
+export {default as DeleteUserDialog} from './DeleteUserDialog'

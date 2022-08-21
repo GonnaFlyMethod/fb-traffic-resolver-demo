@@ -1,1 +1,1 @@
-export { default as UsersModel } from './Users.model'
+export {default as UsersModel} from './Users.model'
