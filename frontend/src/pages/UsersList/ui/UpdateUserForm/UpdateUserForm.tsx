@@ -9,15 +9,16 @@ import {TUserWithID, TUserWithoutID} from "shared/types";
 import {UsersModel} from "../../model";
 import styles from "./Styles.module.scss";
 import {useTranslation} from "react-i18next";
-
-const validationSchema = yup.object().shape({
-    name: commonStringValidation("Name", 3),
-    surname: commonStringValidation("Surname", 3),
-    email: emailValidation(),
-});
+import {useMemo} from "react";
 
 function UpdateUserForm({user, hideModal}: any) {
     const {id, name, surname, email} = user;
+
+    const validationSchema = useMemo(()=>yup.object().shape({
+        name: commonStringValidation("Name", 3),
+        surname: commonStringValidation("Surname", 3),
+        email: emailValidation(),
+    }), []);
 
     const {t} = useTranslation();
 
