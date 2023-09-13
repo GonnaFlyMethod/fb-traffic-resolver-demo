@@ -23,5 +23,3 @@ to shut down the demo type:
 ```bash
 make down
 ```
-
-👍 Special thanks to [RomaZherko21](https://github.com/RomaZherko21) who gave me a frontend project for the demo.
