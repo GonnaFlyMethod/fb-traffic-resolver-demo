@@ -14,7 +14,7 @@
     "axios": "^0.25.0",
     "clsx": "^1.1.1",
     "dotenv": "^16.0.0",
-    "eslint": "^7.11.0",
+    "eslint": "^9.1.0",
     "formik": "^2.2.9",
     "i18next": "^21.6.12",
     "i18next-browser-languagedetector": "^6.1.3",
